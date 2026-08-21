@@ -35,6 +35,8 @@
   body { background: #FCF9F3; }
   .reveal { opacity: 0; }
   .reveal.in-view { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+  @keyframes bounce2 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
+  .scrollcue { animation: bounce2 1.8s ease-in-out infinite; }
 </style>
 </head>
 <body class="font-body text-ink">
@@ -50,16 +52,21 @@
   </div>
 </nav>
 
-<section class="relative h-[100dvh] w-full bg-ink flex items-center justify-center text-center overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-ink"></div>
-  <div class="relative z-10 px-6 reveal in-view">
-    <p class="text-gold tracking-[0.3em] text-xs md:text-sm mb-4">AL KHAWANEEJ &middot; DUBAI</p>
-    <h1 class="font-display text-5xl md:text-7xl text-cream mb-4">Beurre</h1>
-    <p class="text-cream/80 text-lg md:text-xl font-light">French Bakery &amp; Coffee House</p>
+<section class="relative min-h-[100dvh] w-full bg-ink flex flex-col items-center justify-center text-center overflow-hidden px-6">
+  <div class="absolute inset-0 bg-gradient-to-br from-ink via-[#2a2118] to-ink"></div>
+  <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 30% 20%, #C9A15A33, transparent 50%), radial-gradient(circle at 70% 80%, #C9A15A22, transparent 50%);"></div>
+  <div class="relative z-10 reveal in-view">
+    <p class="text-gold tracking-[0.3em] text-xs md:text-sm mb-6">AL KHAWANEEJ &middot; DUBAI</p>
+    <h1 class="font-display text-6xl md:text-8xl text-cream mb-6">Beurre</h1>
+    <p class="text-cream/80 text-xl md:text-2xl font-light mb-3">French Bakery &amp; Coffee House</p>
+    <p class="text-cream/50 text-sm">Fresh croissants &middot; Artisan coffee &middot; Warehouse warmth</p>
   </div>
+  <a href="#story" class="absolute bottom-10 z-10 text-gold scrollcue" aria-label="Scroll down">
+    <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
+  </a>
 </section>
 
-<section id="story" class="py-24 px-6 max-w-4xl mx-auto text-center">
+<section id="story" class="reveal py-24 px-6 max-w-4xl mx-auto text-center">
   <p class="text-gold tracking-[0.3em] text-xs mb-4">OUR STORY</p>
   <h2 class="font-display text-3xl md:text-4xl mb-6">A corner of France, warehouse-set</h2>
   <p class="text-ash text-lg leading-relaxed">
@@ -70,7 +77,7 @@
   </p>
 </section>
 
-<section id="menu" class="py-24 px-6 bg-white">
+<section id="menu" class="reveal py-24 px-6 bg-white">
   <div class="max-w-5xl mx-auto">
     <p class="text-gold tracking-[0.3em] text-xs text-center mb-4">THE MENU</p>
     <h2 class="font-display text-3xl md:text-4xl text-center mb-16">Pastries &amp; Coffee</h2>
@@ -89,26 +96,42 @@
   </div>
 </section>
 
-<section id="visit" class="py-24 px-6 bg-ink text-cream">
+<section id="visit" class="reveal py-24 px-6 bg-ink text-cream">
   <div class="max-w-4xl mx-auto text-center">
     <p class="text-gold tracking-[0.3em] text-xs mb-4">VISIT</p>
     <h2 class="font-display text-3xl md:text-4xl mb-10">Come by</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <a href="https://www.google.com/maps/search/?api=1&query=Beurre+Bakery+Al+Khawaneej+Dubai" target="_blank" rel="noopener noreferrer" class="border border-gold/40 hover:border-gold px-6 py-8 transition">
-        <p class="font-display text-gold mb-2">Location</p>
-        <p class="text-cream/70 text-sm">Al Khawaneej, Dubai, UAE</p>
-      </a>
-      <a href="https://www.instagram.com/beurrebakery.ae" target="_blank" rel="noopener noreferrer" class="border border-gold/40 hover:border-gold px-6 py-8 transition">
-        <p class="font-display text-gold mb-2">Instagram</p>
-        <p class="text-cream/70 text-sm">@beurrebakery.ae</p>
-      </a>
+
+    <div class="w-full rounded overflow-hidden mb-10 border border-gold/30">
+      <iframe
+        src="https://www.google.com/maps?q=Beurre+Bakery+Al+Khawaneej+Dubai&output=embed"
+        width="100%" height="320" style="border:0; filter: grayscale(0.3) contrast(1.1);"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Beurre Bakery location map">
+      </iframe>
     </div>
+
+    <p class="text-cream/70 mb-8">Al Khawaneej, Dubai, UAE</p>
+
+    <a href="https://www.instagram.com/beurrebakery.ae" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-3 bg-gold hover:bg-gold-light text-ink font-medium px-8 py-4 rounded-full transition">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.02-3.58.07-4.85c.15-3.23 1.66-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07zm0 5.27a4.57 4.57 0 100 9.14 4.57 4.57 0 000-9.14zm0 7.54a2.97 2.97 0 110-5.94 2.97 2.97 0 010 5.94zm5.83-7.72a1.07 1.07 0 11-2.14 0 1.07 1.07 0 012.14 0z"/></svg>
+      Follow @beurrebakery.ae
+    </a>
   </div>
 </section>
 
 <footer class="py-8 text-center text-ash text-xs bg-cream">
   &copy; 2026 Beurre Bakery &middot; Al Khawaneej, Dubai
 </footer>
+
+<script>
+  var els = document.querySelectorAll('.reveal:not(.in-view)');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(function(el){ io.observe(el); });
+</script>
 
 </body>
 </html>
