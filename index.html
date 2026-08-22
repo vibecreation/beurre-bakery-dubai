@@ -33,8 +33,15 @@
 <style>
   html { scroll-behavior: smooth; }
   body { background: #FCF9F3; }
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(28px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
   .reveal { opacity: 0; }
   .reveal.in-view { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .reveal-delay-1.in-view { animation-delay: 0.15s; }
+  .reveal-delay-2.in-view { animation-delay: 0.3s; }
+  .reveal-delay-3.in-view { animation-delay: 0.45s; }
   @keyframes bounce2 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
   .scrollcue { animation: bounce2 1.8s ease-in-out infinite; }
 </style>
@@ -55,11 +62,11 @@
 <section class="relative min-h-[100dvh] w-full bg-ink flex flex-col items-center justify-center text-center overflow-hidden px-6">
   <div class="absolute inset-0 bg-gradient-to-br from-ink via-[#2a2118] to-ink"></div>
   <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 30% 20%, #C9A15A33, transparent 50%), radial-gradient(circle at 70% 80%, #C9A15A22, transparent 50%);"></div>
-  <div class="relative z-10 reveal in-view">
-    <p class="text-gold tracking-[0.3em] text-xs md:text-sm mb-6">AL KHAWANEEJ &middot; DUBAI</p>
-    <h1 class="font-display text-6xl md:text-8xl text-cream mb-6">Beurre</h1>
-    <p class="text-cream/80 text-xl md:text-2xl font-light mb-3">French Bakery &amp; Coffee House</p>
-    <p class="text-cream/50 text-sm">Fresh croissants &middot; Artisan coffee &middot; Warehouse warmth</p>
+  <div class="relative z-10">
+    <p class="reveal in-view text-gold tracking-[0.3em] text-xs md:text-sm mb-6">AL KHAWANEEJ &middot; DUBAI</p>
+    <h1 class="reveal in-view reveal-delay-1 font-display text-6xl md:text-8xl text-cream mb-6">Beurre</h1>
+    <p class="reveal in-view reveal-delay-2 text-cream/80 text-xl md:text-2xl font-light mb-3">French Bakery &amp; Coffee House</p>
+    <p class="reveal in-view reveal-delay-3 text-cream/50 text-sm">Fresh croissants &middot; Artisan coffee &middot; Warehouse warmth</p>
   </div>
   <a href="#story" class="absolute bottom-10 z-10 text-gold scrollcue" aria-label="Scroll down">
     <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
